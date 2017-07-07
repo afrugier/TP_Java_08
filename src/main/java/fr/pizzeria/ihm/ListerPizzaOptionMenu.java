@@ -8,7 +8,9 @@ import fr.pizzeria.dao.IPizzaDao;
  */
 public class ListerPizzaOptionMenu extends OptionMenu {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.pizzeria.ihm.OptionMenu#getLibelle()
 	 */
 	@Override
@@ -16,20 +18,20 @@ public class ListerPizzaOptionMenu extends OptionMenu {
 		return "1. Lister les pizzas";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.pizzeria.ihm.OptionMenu#execute(fr.pizzeria.dao.IPizzaDao)
 	 */
 	@Override
 	public boolean execute(IPizzaDao dao) {
-		for (int i = 0; i < dao.findAllPizzas().length; i++) {
+		for (int i = 0; i < dao.findAllPizzas().size(); i++) {
 
-			if (dao.findAllPizzas()[i] != null) {
+			if (dao.findAllPizzas().get(i) != null) {
 
-				// for (int j = 0; j < listePizza[i].length; j++) {
-				// System.out.print(listePizza[i][j] + " ");
-				// }
-				System.out.print(dao.findAllPizzas()[i].getCode() + " -> " + dao.findAllPizzas()[i].getNom() + " ("
-						+ dao.findAllPizzas()[i].getPrix() + ") ");
+				System.out.print(dao.findAllPizzas().get(i).getId() + "//" + dao.findAllPizzas().get(i).getCode()
+						+ " -> " + dao.findAllPizzas().get(i).getNom() + " (" + dao.findAllPizzas().get(i).getPrix()
+						+ ") ");
 
 				System.out.println("");
 			}
@@ -40,7 +42,9 @@ public class ListerPizzaOptionMenu extends OptionMenu {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.pizzeria.ihm.OptionMenu#getTitle()
 	 */
 	@Override

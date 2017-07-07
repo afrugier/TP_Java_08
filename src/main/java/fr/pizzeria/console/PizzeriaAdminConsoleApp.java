@@ -1,6 +1,5 @@
 package fr.pizzeria.console;
 
-import fr.pizzeria.dao.PizzaDaoMemoire;
 import fr.pizzeria.ihm.Menu;
 
 /**
