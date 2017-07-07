@@ -1,6 +1,8 @@
 package fr.pizzeria.ihm;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoMemoire;
@@ -10,15 +12,15 @@ import fr.pizzeria.dao.PizzaDaoMemoire;
  *
  */
 public class Menu {
-
-	static OptionMenu[] optionMenu = new OptionMenu[]{ 
-		new ListerPizzaOptionMenu(), 
-		new AjouterPizzaOptionMenu(),
-		new ModifierPizzaOptionMenu(), 
-		new SupprimerPizzaOptionMenu() 
-	};
-
+	static Map<Integer, OptionMenu> optionMenu = new HashMap<>();
 	static Scanner questionAjout = new Scanner(System.in).useLocale(Locale.US);
+
+	public Menu(){
+		optionMenu.put(new Integer(0), new ListerPizzaOptionMenu());
+		optionMenu.put(new Integer(1), new AjouterPizzaOptionMenu());
+		optionMenu.put(new Integer(2), new ModifierPizzaOptionMenu());
+		optionMenu.put(new Integer(3), new SupprimerPizzaOptionMenu());
+	}
 
 	/**
 	 * execute le code en fonction du choix réaliser dans le menu
@@ -34,22 +36,22 @@ public class Menu {
 
 			switch (choixPizza) {
 			case 1:
-				System.out.println(optionMenu[0].getTitle());
-				optionMenu[0].execute(dao);
+				System.out.println(optionMenu.get(0).getTitle());
+				optionMenu.get(0).execute(dao);
 				break;
 			case 2:
-				System.out.println(optionMenu[1].getTitle());
-				optionMenu[1].execute(dao);
+				System.out.println(optionMenu.get(1).getTitle());
+				optionMenu.get(1).execute(dao);
 				break;
 			case 3:
-				System.out.println(optionMenu[2].getTitle());
-				optionMenu[0].execute(dao);
-				optionMenu[2].execute(dao);
+				System.out.println(optionMenu.get(2).getTitle());
+				optionMenu.get(0).execute(dao);
+				optionMenu.get(2).execute(dao);
 				break;
 			case 4:
-				System.out.println(optionMenu[3].getTitle());
-				optionMenu[0].execute(dao);
-				optionMenu[3].execute(dao);
+				System.out.println(optionMenu.get(3).getTitle());
+				optionMenu.get(0).execute(dao);
+				optionMenu.get(3).execute(dao);
 				break;
 			case 99:
 				System.out.println("Aurevoir :-(");
@@ -67,8 +69,8 @@ public class Menu {
 		// Titre
 		System.out.println("***** Pizzeria Administration *****");
 
-		for (int i = 0; i < optionMenu.length; i++) {
-			System.out.println(optionMenu[i].getLibelle());
+		for (int i = 0; i < optionMenu.size(); i++) {
+			System.out.println(optionMenu.get(i).getLibelle());
 		}
 
 		System.out.println("99. Sortir");

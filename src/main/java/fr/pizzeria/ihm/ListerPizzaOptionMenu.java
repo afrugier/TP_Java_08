@@ -29,9 +29,8 @@ public class ListerPizzaOptionMenu extends OptionMenu {
 
 			if (dao.findAllPizzas().get(i) != null) {
 
-				System.out.print(dao.findAllPizzas().get(i).getId() + "//" + dao.findAllPizzas().get(i).getCode()
-						+ " -> " + dao.findAllPizzas().get(i).getNom() + " (" + dao.findAllPizzas().get(i).getPrix()
-						+ ") ");
+				System.out.print(dao.findAllPizzas().get(i).getCode() + " -> " + dao.findAllPizzas().get(i).getNom()
+						+ " (" + dao.findAllPizzas().get(i).getPrix() + ") ");
 
 				System.out.println("");
 			}
